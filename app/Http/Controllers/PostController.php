@@ -36,8 +36,10 @@ class PostController extends Controller
      */
     public function store(Request $request) : RedirectResponse
     {
+        // dd($request->all());
         //validate form
-        $this->validate($request,[
+        $this->validate($request,
+        [
             'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
             'title' =>'required|min:3',
             'content'   => 'required|min:10',

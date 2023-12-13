@@ -20,6 +20,7 @@
                         <tr>
                             <th>#</th>
                             <th>Product</th>
+                            <th>Category</th>
                             <th>Qty</th>
                             <th>Harga Jual</th>
                             <th>Harga Beli</th>
@@ -35,6 +36,7 @@
 
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $item->nama }}</td>
+                                <td>{{ $item->nama_kategori }}</td>
                                 <td>{{ $item->qty }}</td>
                                 <td>{{ $item->harga_jual }}</td>
                                 <td>{{ $item->harga_beli }}</td>
