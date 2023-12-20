@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +51,16 @@ Route::get('/productshowall', [ProdukController::class, 'ProductShowAll'])->name
 Route::get('/productstore', [ProdukController::class, 'store']);
 Route::get('/productupdate', [ProdukController::class, 'update']);
 Route::get('/productdelete', [ProdukController::class, 'delete']);
+
+//category
+Route::get('/category', [CategoryController::class, 'index'])->name('category-index');
+Route::get('/category-create', [CategoryController::class, 'create'])->name('category-create');
+Route::post('/category-store', [CategoryController::class, 'store'])->name('category-store');
+Route::get('/category-edit/{id}', [CategoryController::class, 'edit'])->name('category-edit');
+Route::post('/category-update/{id}', [CategoryController::class, 'update'])->name('category-update');
+Route::get('/category-destroy/{id}', [CategoryController::class, 'destroy'])->name('category-destroy');
+
+Route::get('/user', [UserController::class, 'index']);
 
 
 Route::resource('posts', PostController::class);

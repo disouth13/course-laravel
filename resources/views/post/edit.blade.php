@@ -16,20 +16,46 @@
                     <div class="card-body">
 
                         <div class="form-group">
-                            <label for="Title" class="form-label">Title</label>
+                            <label for="Title" class="form-label ">Title</label>
                             <input type="text" name="title" value="{{ old('title', $post->title) }}"
-                                class="form-control" id="title">
+                                class="form-control @error('title')
+                                is-invalid
+                            @enderror"
+                                id="title">
+                            @error('title')
+                                <div class="mt-2 alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="form-group mb-4">
                             <label for="content" class="form-label">Content</label>
-                            <textarea type="text" name="content" class="form-control" id="content">{{ $post->content }}</textarea>
+                            <textarea type="text" name="content"
+                                class="form-control @error('content')
+                                is-invalid
+                            @enderror"
+                                id="content">{{ $post->content }}</textarea>
+                            @error('content')
+                                <div class="mt-2 alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="content" class="form-label">Image</label>
-                            <input type="file" name="image" class="form-control" id="uploadGambar">
+                            <input type="file" name="image"
+                                class="form-control @error('image')
+                                is-invalid
+                            @enderror"
+                                id="uploadGambar">
 
                             <img src="{{ asset('storage/posts/' . $post->image) }}" style="width: 100px;" alt=""
                                 srcset="">
+                            @error('image')
+                                <div class="mt-2 alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
 
                         </div>
 

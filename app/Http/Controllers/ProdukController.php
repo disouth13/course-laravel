@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,14 +12,29 @@ class ProdukController extends Controller
     //
     public function index()
     {
-        $products = DB::table('products')
-        ->join('categories', 'products.categories_id', '=', 'categories_id')
-        ->get();
-        // echo "<pre>";
-        // print_r($products);
+        // $products = DB::table('products')
+        // ->join('categories', 'products.categories_id', '=', 'categories_id')
+        // ->get();
+        // // echo "<pre>";
+        // // print_r($products);
 
-        // dd($products);
-        return view('product.showall', compact('products'));
+        // // dd($products);
+        // return view('product.showall', compact('products'));
+        $product = Product::all();
+        // echo "<pre>";
+        // print_r($product);
+
+        foreach ($product->category as $item) {
+            # code...
+            echo $item->nama;
+            echo "<br>";
+            echo $item->qty;
+            echo "<br>";
+            echo $item->category->nama_kategori;
+
+
+        }
+
     }
 
     public function productshow()

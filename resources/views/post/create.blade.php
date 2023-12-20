@@ -15,11 +15,29 @@
 
                         <div class="form-group">
                             <label for="Title" class="form-label">Title</label>
-                            <input type="text" name="title" class="form-control">
+                            <input type="text" name="title" value="{{ old('title') }}"
+                                class="form-control  @error('title')
+                            is-invalid
+                        @enderror">
+                            @error('title')
+                                <div class="mt-2 alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
                         </div>
                         <div class="form-group mb-4">
                             <label for="content" class="form-label">Content</label>
-                            <textarea type="text" name="content" class="form-control"></textarea>
+                            <textarea type="text" name="content"
+                                class="form-control @error('content')
+                            is-invalid
+                    @enderror">
+                        {{ old('content') }}</textarea>
+                            @error('content')
+                                <div class="mt-2 alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="content" class="form-label">Image</label>

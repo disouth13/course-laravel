@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('phones', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kategori');
-            $table->string('keterangan');
+            $table->unsignedBigInteger('user_id');
+            $table->string('phone');
             $table->timestamps();
+
+            //membuat relasi jika dihapus pada table user maka akan terhapus jg di table phone
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('phones');
     }
 };
