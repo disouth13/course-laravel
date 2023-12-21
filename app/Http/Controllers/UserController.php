@@ -21,7 +21,7 @@ class UserController extends Controller
             echo $item->email;
             echo "<br>";
             echo $item->phone->phone;
-            foreach ($user->roles() as $itemroles) {
+            foreach ($item->roles()->get() as $itemroles) {
                 # code...
                 echo $itemroles->name;
             }

@@ -22,8 +22,11 @@ class CategoryController extends Controller
             echo $item->nama_kategori;
             // echo "<br>";
 
-            echo $item->product->nama;
-
+            // echo $item->product->nama;
+            foreach ($item->product()->get() as $itemproduct) {
+                # code...
+                echo $itemproduct->nama;
+            }
 
         }
         // return view('category.index',compact('category'));
