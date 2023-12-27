@@ -25,6 +25,8 @@ Route::get('/welcome',function(){
     echo "Welcome Laravel";
 });
 
+
+
 Route::get('/welcome/{id}', function($id) {
     echo "Welcome Parameter $id";
 });
@@ -71,3 +73,7 @@ Route::get('/halaman',function(){
     $konten = 'Indonesia berhasil menyelenggarakan MotoGP';
     return view('konten.halaman', compact('title', 'konten'));
 });
+
+//login
+Route::get('/login', LoginController::class, 'index')->name('login');
+Route::get('/register', RegisterController::class, 'index')->name('register');
