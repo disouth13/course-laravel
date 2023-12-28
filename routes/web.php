@@ -77,4 +77,5 @@ Route::get('/halaman',function(){
 });
 
 //login
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
