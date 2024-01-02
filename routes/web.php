@@ -78,4 +78,7 @@ Route::get('/halaman',function(){
 
 //login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/auth-login', [LoginController::class, 'authenticate'])->name('auth-login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/store-register', [RegisterController::class, 'store'])->name('store-register');

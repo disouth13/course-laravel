@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>Login</title>
+    <title>Register Application</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
 
@@ -174,13 +174,18 @@
 
 
     <main class="form-signin w-100 m-auto">
-        <form action="{{ route('auth-login') }}" method="POST">
+        <form action="{{ route('store-register') }}" method="POST">
             @csrf
 
             <div class="text-center">
                 <img class="mb-4" src="/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-                <h1 class="h3 mb-3 fw-normal">Login</h1>
+                <h1 class="h3 mb-3 fw-normal">Register</h1>
 
+            </div>
+
+            <div class="form-floating">
+                <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Username">
+                <label for="floatingInput">Name</label>
             </div>
 
             <div class="form-floating">
@@ -189,25 +194,16 @@
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-                <input name="password" type="password" class="form-control" id="floatingPassword"
+                <input type="password" name="password" class="form-control" id="floatingPassword"
                     placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
 
-            {{-- <div class="row justify-content-evenly">
-                <div class="col-md-6">
-                    <button class="btn btn-primary w-100 py-2" type="submit">Login</button>
-                </div>
 
-                <div class="col-md-6">
-                    <a href="{{ route('register') }}" class="btn btn-light w-100 py-2">Register</a>
-                </div>
-
-            </div> --}}
-            <button class="btn btn-primary w-100 py-2 mb-2" type="submit">Login</button>
-            <a href="{{ route('register') }}" class="btn btn-light w-100 py-2">Register</a>
-            <p class="mt-5 mb-3 text-body-secondary text-center">&copy; 2017–2023</p>
+            <button class="btn btn-primary w-100 py-2 mb-2" type="submit">Register</button>
+            <a href="{{ route('login') }}" class="btn btn-light border-block w-100 py-2">Login</a>
         </form>
+        <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2023</p>
     </main>
     <script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
 
