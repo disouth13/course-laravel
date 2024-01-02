@@ -184,13 +184,21 @@
             </div>
 
             <div class="form-floating">
-                <input type="email" name="email" class="form-control" id="floatingInput"
-                    placeholder="name@example.com">
+
+                <input type="email" name="email"
+                    class="form-control @error('email')
+                is-invalid
+            @enderror"
+                    id="floatingInput" placeholder="name@example.com">
+
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-                <input name="password" type="password" class="form-control" id="floatingPassword"
+                <input name="password" type="password"
+                    class="form-control @error('password') is-invalid
+                @enderror" id="floatingPassword"
                     placeholder="Password">
+
                 <label for="floatingPassword">Password</label>
             </div>
 

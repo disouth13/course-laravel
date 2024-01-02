@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,3 +83,6 @@ Route::post('/auth-login', [LoginController::class, 'authenticate'])->name('auth
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/store-register', [RegisterController::class, 'store'])->name('store-register');
+
+//dashboard
+Route::get('/dashboard', [DashboardController::class, 'index']);

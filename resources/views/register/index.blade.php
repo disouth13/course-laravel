@@ -184,18 +184,26 @@
             </div>
 
             <div class="form-floating">
-                <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Username">
+                <input type="text" name="name"
+                    class="form-control @error('name') is-invalid
+                @enderror" id="floatingInput"
+                    value="{{ old('name') }}" placeholder="Username">
                 <label for="floatingInput">Name</label>
             </div>
 
             <div class="form-floating">
-                <input type="email" name="email" class="form-control" id="floatingInput"
-                    placeholder="name@example.com">
+                <input type="email" name="email"
+                    class="form-control @error('email') is-invalid
+                    @enderror" id="floatingInput"
+                    value="{{ old('email') }}" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-                <input type="password" name="password" class="form-control" id="floatingPassword"
-                    placeholder="Password">
+                <input type="password" name="password"
+                    class="form-control @error('password')
+                    is-invalid
+                @enderror"
+                    id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
 
