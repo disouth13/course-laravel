@@ -85,4 +85,7 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/store-register', [RegisterController::class, 'store'])->name('store-register');
 
 //dashboard
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/administrator', [DashboardController::class, 'index'])->middleware('auth')->middleware('can:IsAdministrator');
+Route::get('/admin', [DashboardController::class, 'index'])->middleware('auth')->middleware('can:IsAdmin');
+Route::get('/userbiasa', [DashboardController::class, 'index'])->middleware('auth')->middleware('can:IsUserBiasa');
