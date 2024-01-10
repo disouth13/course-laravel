@@ -33,8 +33,8 @@ class AuthController extends Controller
                 ],422);
              }
                 $user = User::create([
-                    'name' => $request->name ,
-                    'email' => $request->email ,
+                    'name' => $request->name,
+                    'email' => $request->email,
                     'password'   => Hash::make($request->password),
                 ]);
     
@@ -49,14 +49,14 @@ class AuthController extends Controller
             //throw $th;
             return response()->json([
                 'status' => False,
-                'message' => 'Register Failed'.$th->getMessage(),
+                'message' => 'Register Failed '.$th->getMessage(),
                
             ],422); 
 
          }
     }
 
-    public function loginuser()
+    public function loginuser(Request $request)
     {
         try {
             //code...
@@ -76,6 +76,7 @@ class AuthController extends Controller
 
               //logic auth
         if (!Auth::attempt($request->only(['email','password']))) {
+            
             
             return response()->json([
                 'status' => false,
@@ -99,5 +100,27 @@ class AuthController extends Controller
                
             ],422); 
         }
+    }
+
+    public function logout(Request $request)
+    {
+        // Auth::user()->tokens()->delete();
+        $user = $request->user();
+
+        // Revoke all tokens...
+        // $user->tokens()->delete();
+ 
+        // Revoke the token that was used to authenticate the current request...
+        // $request->user()->currentAccessToken()->delete();
+        $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
+        // dd($user);
+        // Revoke a specific token...
+        // $user->tokens()->where('id', $tokenId)->delete();
+
+
+        return response()->json([
+            'status' => True,
+            'message' => 'Logout Berhasil'
+        ],200);
     }
 }

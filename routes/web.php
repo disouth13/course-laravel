@@ -8,6 +8,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HttpClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,3 +90,5 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::get('/administrator', [DashboardController::class, 'index'])->middleware('auth')->middleware('can:IsAdministrator');
 Route::get('/admin', [DashboardController::class, 'index'])->middleware('auth')->middleware('can:IsAdmin');
 Route::get('/userbiasa', [DashboardController::class, 'index'])->middleware('auth')->middleware('can:IsUserBiasa');
+
+Route::get('/readpostapi', [HttpClientController::class, 'readpost']);

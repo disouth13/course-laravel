@@ -23,5 +23,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //membuat API
-Route::apiResource('/posts', App\Http\Controllers\API\PostController::class)->middleware('auth:sanctum');
+// Route::apiResource('/posts', App\Http\Controllers\API\PostController::class)->middleware('auth:sanctum');
 
+Route::middleware('auth:sanctum')->group(function() {
+    route::post('/logout', [AuthController::class, 'logout']);
+    Route::apiResource('/posts', App\Http\Controllers\API\PostController::class)->middleware('auth:sanctum');
+    
+});
+
+Route::get('/readpost', App\Http\Controllers\API\InvokablePostController::class);
